@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+    <link
+      href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
+      rel="stylesheet"
+    />
+    </head>
+  <body>
+    <div class="center">
+      <h1 style="font-size:28px;font-weight: bold;font-family: Acme;color:#E78200">Invite Only <span style="color:#08ABE2">Chatting </span>Application</h1>
+      <h1 style="font-size:25px;border-bottom: 1px solid silver;font-family: Audiowide;font-weight: bold;color:rgba(42, 41, 41, 0.6)">Login</h1>
+      <form onsubmit="signIn(event)">
+        <div class="txt_field">
+          <input name="email" type="email" required>
+          <span></span>
+          <label>Email</label>
+        </div>
+        <div class="txt_field">
+          <input name="password" type="password" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+        <input type="submit" value="Login">
+        <div class="signup_link">
+          Not a member? <a href="/Register/">Register</a>
+        </div>
+      </form>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
+  <script src="../firebase.js"></script>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Invite Only Chatting Application</title>
+   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+   <link rel="stylesheet" href="landing.css">
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css"
+      integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js"
+      integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+   <div data-collapse="small" data-animation="default" data-duration="400" role="banner" class="navbar nav"
+      style="position:fixed;width:100%">
+      <div class="container">
+         <a href="#" class="navbar-brand col">
+            <h1 style="font-size:18px;font-weight: bold;font-family: Acme;color:#E78200">Invite Only <span
+                  style="color:#08ABE2">Chatting </span>Application</h1>
+         </a>
+         <nav role="navigation" class="nav-menu" id="navbarSupportedContent">
+            <a href="/Login/" class="nav-link col" style="font-family: Acme;">Login</a>
+            <a href="/Register/" class="nav-link col" style="font-family: Acme;">Register</a>
+            <a href="#contact" class="nav-link col" style="font-family: Acme;">Contact</a>
+         </nav>
+         <i class="fas fa-bars navNarrow" style="color: white;cursor: pointer;" onclick='burgerToggle()'></i>
+
+
+      </div>
+   </div>
+   <div id="narrowLinks" style="background-color:#293746">
+      <a href="/Login/" class="nav-link col" style="font-family: Acme;">Login</a>
+      <a href="/Register/" class="nav-link col" style="font-family: Acme;">Register</a>
+      <a href="#" class="nav-link col" style="font-family: Acme;">Contact</a>
+   </div>
+   <div class="hero-section">
+      <div class="container">
+         <div class="flexbox">
+            <div class="left-block">
+               <h2 class="heading-6">Invite Only Chatting Application</h2>
+               <p class="paragraph">A private platform to chat privately!</p>
+            </div>
+            <div class="right-block"><img src="../images/hero-image-min.png" loading="lazy" width="355"
+                  sizes="(max-width: 479px) 75vw, 355px"
+                  srcSet='../images/hero-image-min.png 500w,../images/hero-image-min.png 1426w' alt=""
+                  class="hero-img" /></div>
+         </div>
+      </div>
+   </div>
+   <div id="contact" class="section-2">
+      <div class="container">
+         <div class="flexbox">
+            <div class="div-block-2"><img src="../images//people box-min.png" loading="lazy"
+                  sizes="(max-width: 479px) 87vw, (max-width: 767px) 90vw, (max-width: 991px) 44vw, 42vw" width="441"
+                  srcset="../images/people box-min-p-500.png 500w, ../images/people box-min.png 1013w" alt=""
+                  class="image-3" /></div>
+            <div class="div-block">
+               <h1 class="heading-6" style="margin-left: 30px;">Contact Me</h1>
+               <input id="email" class="gost-button second-gost-btn w-button"
+                  style="border-radius: 20px;width: 100%;margin-bottom: 15px;" type="email"
+                  placeholder="Enter your email address" />
+               <textarea id="body" rows="5" cols="50" class="gost-button w-button"
+                  style="border-radius: 20px;width: 100%;" type="text" placeholder="write something...."></textarea>
+               <a class="button gost-button w-button"
+                  style="width:100%;text-align: center;font-size: 20px;color: white;cursor: pointer;"
+                  onclick="sendEmail()">Send</a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div
+      style="width:100%;text-align: center;font-size: 20px;color: black;font-weight: 700;background-color:rgba(56, 69, 82, 0.92);padding-bottom:20px ;color: white;">
+      Copyright ©2022 . ArfaKamalNoyon</div>
+
+   <script>
+      function burgerToggle() {
+         let linksEl = document.getElementById('narrowLinks');
+         if (linksEl.style.display === 'block') {
+            linksEl.style.display = 'none';
+         } else {
+            linksEl.style.display = 'block';
+         }
+      }
+   </script>
+
+   <script src="https://smtpjs.com/v3/smtp.js">
+   </script>
+   <script type="text/javascript">
+      function sendEmail() {
+         let to = document.getElementById('email');
+         let body = document.getElementById('body');
+         Email.send({
+            Host: "smtp.mailtrap.io",
+            Username: "6ea192cbb41e09",
+            Password: "e0da5012c75441",
+            To: "arfakamal0398@gmail.com",
+            From: `${to.value}`,
+            Subject: "Invite Only Chatting Application",
+            Body: `${body.value}`,
+         })
+            .then(function (message) {
+               to.value = '';
+               body.value = '';
+               Swal.fire({
+                  icon: 'success',
+                  title: 'Email',
+                  text: 'Email has sent successfully',
+               })
+            });
+      }
+   </script>
+
+
+
+</body>
+
+</html>

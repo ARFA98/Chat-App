@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.min.css" integrity="sha512-cyIcYOviYhF0bHIhzXWJQ/7xnaBuIIOecYoPZBgJHQKFPo+TOBA+BY1EnTpmM8yKDU4ZdI3UGccNGCEUdfbBqw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.1.9/sweetalert2.all.min.js" integrity="sha512-IZ95TbsPTDl3eT5GwqTJH/14xZ2feLEGJRbII6bRKtE/HC6x3N4cHye7yyikadgAsuiddCY2+6gMntpVHL1gHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ </head>
+ 
+
+<body>
+    <div class="container">
+        <div class="leftSide">
+            <!-- Header -->
+            <div class="header">
+                <div style="display: flex;align-items:center;">
+                    <div class="userimg">
+                        <img id="user-img" src="images/user.jpg" alt="" class="cover" onclick="showProfile()">
+                    </div>
+                    <h4 id="user-name" style="margin-left: 10px;"></h4>
+                </div>
+
+
+                <ul class="nav_icons">
+                    <li class="dropdown" onclick="changeBadge()">
+                        <ion-icon name="notifications" onclick="dropDown()" class="dropbtn"></ion-icon>
+                        <span id="badge" class="badge" style="display: none;"></span>
+                        <div id="myDropdown" class="dropdown-content">
+
+                        </div>
+                    </li>
+                    <li>
+                        <ion-icon name="add-circle" onclick="show()"></ion-icon>
+                    </li>
+                    <li>
+                        <ion-icon name="log-out" onclick="signOut()"></ion-icon>
+                    </li>
+                </ul>
+            </div>
+            <!-- Dialog Create chat Box -->
+            <dialog id="modal" style="width:500px">
+                <div style="display: flex;justify-content:space-between">
+                    <h3>Add Friend</h3>
+                    <ion-icon style="cursor: pointer;color: #51585c;font-size: 1.5em;" name="close-circle"
+                        onclick="closeModal()"></ion-icon>
+                </div>
+                <div style="width:100%;margin-top:10px;padding: 0px 30px;">
+                    <h5 style="color:rgba(0,0,0,0.8);align-self: flex-start;">Add Profile Link here and start chat
+                    </h5>
+                </div>
+                <form class="copy-body" onsubmit="createChat(event)">
+                    <input name="link" type="text" id="copy-Text">
+                    <button id="copy-Btn" type="submit">
+                        <ion-icon name="chatbubbles"></ion-icon> Start chat
+                    </button>
+
+                </form>
+            </dialog>
+            <!-- Dialog Profile Box -->
+            <dialog id="profile-modal" style="width:500px">
+                <div style="display: flex;justify-content:space-between">
+                    <h3>Profile</h3>
+                    <ion-icon style="cursor: pointer;color: #51585c;font-size: 1.5em;" name="close-circle"
+                        onclick="closeProfileModal()"></ion-icon>
+                </div>
+                <div style="display: flex;flex-direction: column;align-items: center;margin-top: 20px;">
+                    <div class="userimg" style="width: 50px;height: 50px;">
+                        <img src="images/user.jpg" class="cover" alt="" id="profile-img">
+                    </div>
+
+                    <h4 id="user_name" style="margin-top:10px;"></h4>
+                    <h5 id="user-email" style="margin-top:10px;color:rgba(0,0,0,0.5)"></h5>
+                    <div style="width:100%;margin-top:10px;padding: 0px 35px;">
+                        <h5 style="color:rgba(0,0,0,0.8);align-self: flex-start;">Copy Profile Link
+                        </h5>
+                    </div>
+                    <div class="copy-body">
+                        <input type="text" id="copyText">
+                        <button id="copyBtn">
+                            <ion-icon name="copy"></ion-icon> Copy
+                        </button>
+
+                    </div>
+                </div>
+                
+
+            </dialog>
+            <!-- CHAT LIST -->
+            <div id="chatList" class="chatlist">
+
+                <!-- <div class="block unread">
+                    <div class="imgBox">
+                        <img src="images/img2.jpg" class="cover" alt="">
+                    </div>
+                    <div class="details">
+                        <div class="listHead">
+                            <h4>Andre</h4>
+                            <p class="time">12:34</p>
+                        </div>
+                        <div class="message_p">
+                            <p>I love your youtube videos!</p>
+                            <b>1</b>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <h3 id="start" style="text-align:center;margin-top:300px;position: relative;flex:70%">Please select your chat to
+            start conversation</h3>
+        <div id="rightSide" class="rightSide">
+
+            <div id="header" id="header" class="header">
+
+            </div>
+
+            <!-- CHAT-BOX -->
+            <div id="chatBox" class="chatbox">
+            </div>
+            <div id="bottom-scroll"></div>
+            <!-- emoji -->
+            <div class="uk-container uk-container-small uk-section">
+                
+            </div>
+            <!-- CHAT INPUT -->
+            <form id="chat-input" class="chat_input" onsubmit="sendMessage(event)">
+                <ion-icon name="happy-outline" class="first-btn uk-button uk-button-primary" style="cursor: pointer"></ion-icon>
+                <!-- <ion-icon name="happy-outline"></ion-icon> -->
+                <input class="two uk-textarea uk-margin" name="message" type="text" placeholder="Type a message">
+                <ion-icon name="send" type="submit" style="display: none;"></ion-icon>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="index.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-storage.js"></script>
+    <script src="../firebase.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script src="vanillaEmojiPicker.js"></script>
+    <script>
+
+        new EmojiPicker({
+            trigger: [
+                {
+                    selector: '.first-btn',
+                    insertInto: ['.one', '.two'] // '.selector' can be used without array
+                },
+                {
+                    selector: '.second-btn',
+                    insertInto: '.two'
+                }
+            ],
+            closeButton: true,
+            //specialButtons: green
+        });
+
+    </script>
+</body>
+
+</html>
