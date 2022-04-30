@@ -44,7 +44,7 @@ const email=localStorage.getItem('email');
 const image=localStorage.getItem('image');
 const id=localStorage.getItem('id');
 
-const Url='http://127.0.0.1:5500/';
+const Url='https://arfa98.github.io/Chat-App/';
 
 if(username&&email&&image&&id){
     const profileImage=document.getElementById('profile-img')
