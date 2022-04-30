@@ -14,7 +14,7 @@ const db = firebase.firestore();
 const auth = firebase.auth();
 const storage = firebase.storage();
 
-const baseUrl = 'http://127.0.0.1:5500/';
+const baseUrl = 'https://arfa98.github.io/Chat-App/';
 
 
 //signup function
